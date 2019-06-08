@@ -11,11 +11,21 @@ export default class personDetails extends Component {
                         alt='planet'
                     />
                     <div>
-                        <h3>Planet name</h3>
-                        <hr className='mt-1' />
-                        <p>Population 12343212</p>
-                        <p>Rotation period 43</p>
-                        <p>Diametr 100</p>
+                        <h3>R2-D2</h3>
+                        <ul className='list-group list-group-flush'>
+                            <li className='list-group-item'>
+                                <span>Gender: </span>
+                                <span>male</span>
+                            </li>
+                            <li className='list-group-item'>
+                                <span>Birth year: </span>
+                                <span>43</span>
+                            </li>
+                            <li className='list-group-item'>
+                                <span>Eye color: </span>
+                                <span>red</span>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </div>

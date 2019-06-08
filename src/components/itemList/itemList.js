@@ -1,19 +1,51 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import './itemList.scss';
 
+import Spinner from '../spinner'
+import SwapiService from "../../services/swapi-service";
+
 export default class itemList extends Component {
+    swapiService = new SwapiService();
+
+    state = {
+        peopleList: null
+    };
+
+    componentDidMount() {
+        this.swapiService
+            .getAllPeople()
+            .then(peopleList => {
+                this.setState({
+                    peopleList
+                });
+            });
+
+    }
+
+    renderItems(arr) {
+        return arr.map(({id, name}) => {
+            return (
+                <li className="list-group-item"
+                    key={id}
+                    onClick={() => this.props.onItemSelected(id)}>
+                    {name}
+                </li>
+            );
+        });
+    }
+
     render() {
+
+        const {peopleList} = this.state;
+        const items = this.renderItems(peopleList);
+
+        if (!peopleList) {
+            return <Spinner />
+        }
+
         return (
             <ul className='container list-group item-list'>
-                <li className='list-group-item d-flex justify-content-between align-items-center'>
-                    Cras justo odio
-                </li>
-                <li className='list-group-item d-flex justify-content-between align-items-center'>
-                    Dapibus ac facilisis in
-                </li>
-                <li className='list-group-item d-flex justify-content-between align-items-center'>
-                    Morbi leo risus
-                </li>
+                {items}
             </ul>
         );
     }

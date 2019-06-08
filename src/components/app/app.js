@@ -8,13 +8,24 @@ import PersonDetails from '../personDetails'
 import './app.scss';
 
 export default class app extends Component {
+
+    state = {
+        selectedPerson: null
+    };
+
+    onPersonSelected = (id) => {
+        this.setState({
+            selectedPerson: id
+        })
+    };
+
     render() {
         return (
             <div>
                 <Header />
                 <RandomPlanet />
-                <ItemList />
-                <PersonDetails />
+                <ItemList onItemSelected={this.onPersonSelected}/>
+                <PersonDetails personId={this.state.selectedPerson}/>
             </div>
         );
     }
