@@ -11,6 +11,7 @@ export default class itemList extends Component {
         peopleList: null
     };
 
+    // error Todo
     componentDidMount() {
         this.swapiService
             .getAllPeople()
