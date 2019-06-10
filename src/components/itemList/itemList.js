@@ -2,25 +2,21 @@ import React, {Component} from 'react';
 import './itemList.scss';
 
 import Spinner from '../spinner'
-import SwapiService from "../../services/swapi-service";
 
 export default class itemList extends Component {
-    swapiService = new SwapiService();
 
     state = {
-        peopleList: null
+        itemList: null
     };
 
-    // error Todo
     componentDidMount() {
-        this.swapiService
-            .getAllPeople()
-            .then(peopleList => {
+        const {getData} = this.props;
+
+        getData.then(peopleList => {
                 this.setState({
-                    peopleList
+                    itemList: peopleList
                 });
             });
-
     }
 
     renderItems(arr) {
@@ -37,15 +33,16 @@ export default class itemList extends Component {
 
     render() {
 
-        const {peopleList} = this.state;
-        const items = this.renderItems(peopleList);
+        const {itemList} = this.state;
 
-        if (!peopleList) {
+        if (!itemList) {
             return <Spinner />
         }
 
+        const items = this.renderItems(itemList);
+
         return (
-            <ul className='container list-group item-list'>
+            <ul className='list-group'>
                 {items}
             </ul>
         );

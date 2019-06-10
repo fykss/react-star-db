@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import './header.scss';
 
 export default class header extends Component {
@@ -19,7 +19,7 @@ export default class header extends Component {
                         <ul className='navbar-nav mr-auto'>
                             <li className='nav-item'>
                                 <a className='nav-link' href='/'>
-                                    People{' '}
+                                    People
                                     <span className='sr-only'>(current)</span>
                                 </a>
                             </li>
@@ -37,23 +37,6 @@ export default class header extends Component {
                     </div>
                 </div>
             </nav>
-
-            // <div className='header d-flex'>
-            //     <h3>
-            //         <a href='/'>StarDB</a>
-            //     </h3>
-            //     <ul className='d-flex'>
-            //         <li>
-            //             <a href='/'>People</a>
-            //         </li>
-            //         <li>
-            //             <a href='/'>Planets</a>
-            //         </li>
-            //         <li>
-            //             <a href='/'>Starships</a>
-            //         </li>
-            //     </ul>
-            // </div>
         );
     }
 }
